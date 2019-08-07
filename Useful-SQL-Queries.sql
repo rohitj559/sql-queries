@@ -9,47 +9,69 @@
 -- ---------------------------------------------------------
 -- 3. Creating and working with Tables
 
-use Sample
-go
-create table tblPerson
-(
- Id int not null  primary key,
- Name nvarchar(50) not null,
- Email nvarchar(50) not null,
- GenderId int
-)
+--use Sample
+--go
+--create table tblPerson
+--(
+-- Id int not null  primary key,
+-- Name nvarchar(50) not null,
+-- Email nvarchar(50) not null,
+-- GenderId int,
+-- Age int
+--)
 
-create table tblGender
-(
- ID int not null  primary key,
- Gender nvarchar(10) not null
-)
+--create table tblGender
+--(
+-- ID int not null  primary key,
+-- Gender nvarchar(10) not null
+--)
 
-drop table tblPerson
+--drop table tblPerson
 
 -- To add a foreign key reference using a query
-Alter table tblPerson 
-add constraint tblPerson_GenderId_FK FOREIGN KEY (GenderId) references tblGender(ID)
+--Alter table tblPerson 
+--add constraint tblPerson_GenderId_FK FOREIGN KEY (GenderId) references tblGender(ID)
 
 -- ---------------------------------------------------------------------------------
 -- Default constraint in sql server - Part 4
 
-ALTER TABLE tblPerson
-ADD CONSTRAINT DF_tblPerson_GenderId
-DEFAULT 3 FOR GenderId
+--ALTER TABLE tblPerson
+--ADD CONSTRAINT DF_tblPerson_GenderId
+--DEFAULT 3 FOR GenderId
 
-select * from tblPerson
-Insert into tblPerson(ID,Name,Email, GenderId) values(9,'Robo','ro@ro.com', null)
+--select * from tblPerson
+--Insert into tblPerson(ID,Name,Email, GenderId) values(9,'Robo','ro@ro.com', null)
 
-ALTER TABLE tblPerson 
-DROP CONSTRAINT DF_tblPerson_GenderId
+--ALTER TABLE tblPerson 
+--DROP CONSTRAINT DF_tblPerson_GenderId
 
 ------------------------------------------------------------------------------------
 -- Cascading referential integrity constraint - Part 5
 
-delete from tblPerson where GenderId = 3
+--delete from tblPerson where GenderId = 3
 
 ------------------------------------------------------------------------------------
+
+--insert into tblPerson values(1,'Robo','r@r.com', null, 12)
+--insert into tblPerson values(2,'Aobo','a@a.com', null, 13)
+--insert into tblPerson values(3,'mobo','m@m.com', null, 14)
+--insert into tblPerson values(4,'tobo','t@t.com', null, 15)
+--insert into tblPerson values(5,'lobo','l@l.com', null, 16)
+--insert into tblPerson values(7,'sobo','s@s.com', null, 17)
+
+--ALTER TABLE tblPerson
+--ADD CONSTRAINT CK_tblPerson_Age CHECK (Age > 0 AND Age < 150)
+
+--Testing
+--insert into tblPerson values(8,'sobo','s@s.com', null, 175)
+
+--ALTER TABLE tblPerson
+--DROP CONSTRAINT CK_tblPerson_Age
+
+-------------------------------------------------------------------
+-- Identity column in SQL Server - Part 7
+
+
 
 
 
