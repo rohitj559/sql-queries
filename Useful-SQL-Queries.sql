@@ -32,6 +32,19 @@ Alter table tblPerson
 add constraint tblPerson_GenderId_FK FOREIGN KEY (GenderId) references tblGender(ID)
 
 -- ---------------------------------------------------------------------------------
+-- Default constraint in sql server - Part 4
+
+ALTER TABLE tblPerson
+ADD CONSTRAINT DF_tblPerson_GenderId
+DEFAULT 3 FOR GenderId
+
+select * from tblPerson
+Insert into tblPerson(ID,Name,Email, GenderId) values(9,'Robo','ro@ro.com', null)
+
+ALTER TABLE tblPerson 
+DROP CONSTRAINT DF_tblPerson_GenderId
+
+------------------------------------------------------------------------------------
 
 
 
