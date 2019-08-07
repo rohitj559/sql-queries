@@ -45,6 +45,12 @@ ALTER TABLE tblPerson
 DROP CONSTRAINT DF_tblPerson_GenderId
 
 ------------------------------------------------------------------------------------
+-- Cascading referential integrity constraint - Part 5
+
+delete from tblPerson where GenderId = 3
+
+------------------------------------------------------------------------------------
+
 
 
 
