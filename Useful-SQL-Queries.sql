@@ -51,6 +51,7 @@
 --delete from tblPerson where GenderId = 3
 
 ------------------------------------------------------------------------------------
+--Check constraint in SQL Server - Part 6
 
 --insert into tblPerson values(1,'Robo','r@r.com', null, 12)
 --insert into tblPerson values(2,'Aobo','a@a.com', null, 13)
@@ -70,6 +71,54 @@
 
 -------------------------------------------------------------------
 -- Identity column in SQL Server - Part 7
+
+--Create Table tblPerson1
+--(
+--PersonId int Identity(1,1) Primary Key,
+--Name nvarchar(20)
+--)
+
+--select * from tblPerson1
+
+--Insert into tblPerson1 values ('Sam')
+--Insert into tblPerson1 values ('Sara')
+
+--select * from tblPerson1
+
+--Insert into tblPerson1 values (1,'Todd')
+
+--Insert into tblPerson1 values ('Todd')
+
+--select * from tblPerson1
+
+--delete from tblPerson1 where PersonId = 1
+--select * from tblPerson1
+
+--SET Identity_Insert tblPerson1 ON
+--Insert into tblPerson1(PersonId, Name) values(1, 'John')
+--select * from tblPerson1
+
+--delete  from tblPerson1
+--select * from tblPerson1
+--SET Identity_Insert tblPerson1 OFF
+--Insert into tblPerson1 values ('Todd')
+--select * from tblPerson1
+
+--DBCC CHECKIDENT(tblPerson1, RESEED, 0)
+--select * from tblPerson1
+--Insert into tblPerson1 values ('Todd')
+--select * from tblPerson1
+
+------------------------------------------------------------------------
+-- How to get the last generated identity column value in SQL Server - Part 8
+
+
+
+
+
+
+
+
 
 
 
