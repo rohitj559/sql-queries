@@ -134,8 +134,21 @@
 --select * from tblPerson3
 
 ---------------------------------------------------------------------------------
-
 --Select statement - Part 10
+
+--To Select distinct rows use DISTINCT keyword
+--SELECT DISTINCT Column_List
+--FROM Table_Name
+
+--Example: Select distinct city from tblPerson
+
+--Filtering rows with WHERE clause
+--SELECT Column_List
+--FROM Table_Name
+--WHERE Filter_Condition
+
+--------------------------------------------------------------------------------
+
 
 
 
