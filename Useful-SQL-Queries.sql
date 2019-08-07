@@ -109,8 +109,35 @@
 --Insert into tblPerson1 values ('Todd')
 --select * from tblPerson1
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 -- How to get the last generated identity column value in SQL Server - Part 8
+
+--SCOPE_IDENTITY() - returns the last identity value that is created in the same session and in the same scope.
+--@@IDENTITY - returns the last identity value that is created in the same session and across any scope.
+--IDENT_CURRENT('TableName') - returns the last identity value that is created for a specific table across any session and any scope.
+
+------------------------------------------------------------------------------
+-- Unique key constraint - Part 9
+
+--create table tblPerson3 
+--(
+--	ID int primary key,
+--	Name varchar(10)
+--)
+--insert into tblPerson3 values (1, 'roro')
+
+--Alter Table tblPerson3
+--Add Constraint UN_tblPerson3_Name Unique(Name)
+
+--insert into tblPerson3 values (1, 'roro')
+--insert into tblPerson3 values (2, 'poro')
+--select * from tblPerson3
+
+---------------------------------------------------------------------------------
+
+--Select statement - Part 10
+
+
 
 
 
