@@ -281,6 +281,30 @@ cross join tblDepartment dept
 ----------------------------------------------------------------------
 --Self join in sql server - Part 14
 
+create table tblEmployee1
+(
+	ID int Identity(1,1) primary key,
+	Name nvarchar(20),
+	ManagerID int
+)
+
+insert into tblEmployee1 values ('Mike', 3)
+insert into tblEmployee1 values ('Rob', 1)
+insert into tblEmployee1 values ('Todd', NULL)
+insert into tblEmployee1 values ('Ben', 1)
+insert into tblEmployee1 values ('Sam', 1)
+
+select * from tblEmployee1
+
+select emp.Name as Employee, mgr.Name as Manager
+from tblEmployee1 emp
+join tblEmployee1 mgr
+on emp.ManagerID = mgr.ID
+
+----------------------------------------------------------------
+
+
+
 
 
 
