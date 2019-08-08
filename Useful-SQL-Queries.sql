@@ -148,7 +148,66 @@
 --WHERE Filter_Condition
 
 --------------------------------------------------------------------------------
+-- Group By - Part 11
+use Sample 
+GO
+drop table tblEmployee
 
+use Sample 
+GO
+create table tblEmployee
+(
+	ID int Identity(1,1) primary key,
+	Name nvarchar(20),
+	Gender nvarchar(10),
+	Salary int,
+	City nvarchar(20)
+)
+
+SET Identity_Insert tblEmployee OFF
+
+insert into tblEmployee values ('aoro', 'male', 4500, 'hongkong');
+insert into tblEmployee values ('porp', 'female', 7500, 'london');
+insert into tblEmployee values ('xoro', 'male', 3500, 'massachussets');
+insert into tblEmployee values ('uoro', 'female', 2500, 'japan');
+insert into tblEmployee values ('poro', 'female', 5500, 'florida');
+insert into tblEmployee values ('boro', 'female', 1100, 'chicago');
+select * from tblEmployee
+
+select city, sum(salary) as Salary 
+from tblEmployee
+group by city
+
+select City, Gender, sum(Salary) as Salary 
+from tblEmployee
+group by City, Gender
+order by City
+
+select Gender, City, sum(Salary) as Salary 
+from tblEmployee
+group by City, Gender
+order by City
+
+select count(ID) from tblEmployee
+select Gender, City, sum(Salary) as Salary, count(ID) as [No of Employees]
+from tblEmployee
+group by City, Gender
+order by City
+
+select count(ID) from tblEmployee
+select Gender, City, sum(Salary) as Salary, count(ID) as [No of Employees]
+from tblEmployee
+where Gender = 'female'
+group by City, Gender
+
+select count(ID) from tblEmployee
+select Gender, City, sum(Salary) as Salary, count(ID) as [No of Employees]
+from tblEmployee
+group by City, Gender
+having Gender = 'female'
+
+-----------------------------------------------------------------------------------
+--Joins in sql server - Part 12
 
 
 
