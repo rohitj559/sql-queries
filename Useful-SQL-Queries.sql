@@ -209,6 +209,82 @@ having Gender = 'female'
 -----------------------------------------------------------------------------------
 --Joins in sql server - Part 12
 
+drop table tblEmployee
+
+create table tblEmployee
+(
+	ID int Identity(1,1) primary key,
+	Name nvarchar(20),
+	Gender nvarchar(20),
+	Salary int,
+	DepartmentId int
+)
+
+create table tblDepartment
+(
+	Id int Identity(1,1) primary key,
+	DepartmentName nvarchar(20),
+	Location nvarchar(20),
+	DepartmentHead nvarchar(20)
+)
+
+Alter table tblEmployee 
+add constraint tblEmployee_DepartmentId_FK FOREIGN KEY (DepartmentId) references tblDepartment(Id)
+
+insert into tblDepartment values ('IT', 'London', 'Rick')
+insert into tblDepartment values ('Payroll', 'Delhi', 'Ron')
+insert into tblDepartment values ('HR', 'New York', 'Christie')
+insert into tblDepartment values ('Other Department', 'Sydney', 'Cindrella')
+
+select * from tblDepartment
+select * from tblEmployee
+
+drop table tblDepartment
+drop table tblEmployee
+
+
+insert into tblEmployee values ('Tom', 'Male', 4000, 1)
+insert into tblEmployee values ('Pam', 'Female', 3000, 3)
+insert into tblEmployee values ('John', 'Male', 3500, 1)
+insert into tblEmployee values ('Sam', 'Male', 4500, 2)
+insert into tblEmployee values ('Todd', 'Male', 2800, 2)
+insert into tblEmployee values ('Ben', 'Male', 7000, 1)
+insert into tblEmployee values ('Sara', 'Female', 4800, 3)
+insert into tblEmployee values ('Valarie', 'Female', 5500, 1)
+insert into tblEmployee values ('James', 'Male', 6500, NULL)
+insert into tblEmployee values ('Russell', 'Male', 8800, NULL)
+
+select Name, Gender, Salary, DepartmentName
+from tblEmployee emp
+inner join tblDepartment dept
+on emp.DepartmentId = dept.Id
+
+select Name, Gender, Salary, DepartmentName
+from tblEmployee emp
+left outer join tblDepartment dept
+on emp.DepartmentId = dept.Id
+
+select Name, Gender, Salary, DepartmentName
+from tblEmployee emp
+right outer join tblDepartment dept
+on emp.DepartmentId = dept.Id
+
+select Name, Gender, Salary, DepartmentName
+from tblEmployee emp
+full join tblDepartment dept
+on emp.DepartmentId = dept.Id
+
+select Name, Gender, Salary, DepartmentName
+from tblEmployee emp
+cross join tblDepartment dept
+
+----------------------------------------------------------------------
+--Self join in sql server - Part 14
+
+
+
+
+
 
 
 
