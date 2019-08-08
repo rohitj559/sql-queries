@@ -302,6 +302,38 @@ join tblEmployee1 mgr
 on emp.ManagerID = mgr.ID
 
 ----------------------------------------------------------------
+--Different ways to replace NULL in sql server - Part 15
+
+select emp.Name as Employee, mgr.Name as Manager
+from tblEmployee1 emp
+left outer join tblEmployee1 mgr
+on emp.ManagerID = mgr.ID
+
+select emp.Name as Employee, ISNULL(mgr.Name, 'No Manager') as Manager
+from tblEmployee1 emp
+left outer join tblEmployee1 mgr
+on emp.ManagerID = mgr.ID
+
+select emp.Name as Employee, ISNULL(mgr.Name, 'No Manager') as Manager
+from tblEmployee1 emp
+left outer join tblEmployee1 mgr
+on emp.ManagerID = mgr.ID
+
+select emp.Name as Employee, 
+	case 
+		when mgr.Name is null then 'No Manager' else mgr.Name
+	end
+from tblEmployee1 emp
+left outer join tblEmployee1 mgr
+on emp.ManagerID = mgr.ID
+
+select emp.Name as Employee, COALESCE(mgr.Name, 'No Manager') as Manager
+from tblEmployee1 emp
+left outer join tblEmployee1 mgr
+on emp.ManagerID = mgr.ID
+
+
+
 
 
 
