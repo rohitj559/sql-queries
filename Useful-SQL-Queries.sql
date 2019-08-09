@@ -530,8 +530,73 @@ Print 'Name of the Employee = ' + @EmployeeName
 ------------------------------------------------------------------------------
 --Built in string functions in sql server 2008 - Part 22
 
+Select ASCII('A')
 
+Declare @Number int
+Set @Number = 1
+While(@Number <= 255)
+Begin
+ Print CHAR(@Number)
+ Set @Number = @Number + 1
+End
 
+Declare @Number int
+Set @Number = 65
+While(@Number <= 90)
+Begin
+ Print CHAR(@Number)
+ Set @Number = @Number + 1
+End
+
+Declare @Number int
+Set @Number = 97
+While(@Number <= 122)
+Begin
+ Print CHAR(@Number)
+ Set @Number = @Number + 1
+End
+
+Declare @Number int
+Set @Number = 65
+While(@Number <= 90)
+Begin
+ Print LOWER(CHAR(@Number))
+ Set @Number = @Number + 1
+End
+
+Select LTRIM('   Hello')
+
+Select RTRIM('Hello   ')
+
+Select LTRIM(RTRIM('   Hello   '))
+
+Select LOWER('CONVERT This String Into Lower Case')
+
+Select UPPER('CONVERT This String Into upper Case')
+
+Select REVERSE('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
+Select LEN('SQL Functions   ')
+
+-------------------------------------------------------------------
+--LEFT, RIGHT, CHARINDEX and SUBSTRING functions - Part 23
+
+Select LEFT('ABCDE', 3)
+Select RIGHT('ABCDE', 3)
+CHARINDEX('@','sara@aaa.com',1)
+Select SUBSTRING('John@bbb.com',6, 7)
+Select SUBSTRING('John@bbb.com',(CHARINDEX('@', 'John@bbb.com') + 1), (LEN('John@bbb.com') - CHARINDEX('@','John@bbb.com')))
+
+select * from tblPerson
+insert into tblPerson values (14,'Robo', 'a@a.com', null, 10)
+
+select SUBSTRING(Email,(CHARINDEX('@', Email) + 1), (LEN(Email) - CHARINDEX('@',Email))) as EmailDomain, 
+count(*) as Total
+from tblPerson
+group by Email
+
+-----------------------------------------------------------------------------------------------------------------
+--Replicate, Space, Patindex, Replace and Stuff functions - Part 24
 
 
 
