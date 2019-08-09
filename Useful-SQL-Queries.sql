@@ -332,6 +332,29 @@ from tblEmployee1 emp
 left outer join tblEmployee1 mgr
 on emp.ManagerID = mgr.ID
 
+------------------------------------------------------------------------------
+--Coalesce() function in sql server - Part 16
+
+create table tblEmployee3
+(
+	Id int Identity(1,1) primary key,
+	FirstName nvarchar(20),
+	MiddleName nvarchar(20),
+	LastName nvarchar(20),
+)
+
+insert into tblEmployee3 values ('Sam', NULL, NULL)
+insert into tblEmployee3 values (NULL, 'Todd', 'Tanzan')
+insert into tblEmployee3 values (NULL, NULL, 'Sara')
+insert into tblEmployee3 values ('Ben', 'Parker', NULL)
+insert into tblEmployee3 values ('James', 'Nick', 'Nancy')
+
+select * from tblEmployee3
+
+select COALESCE(FirstName, MiddleName, LastName)
+from tblEmployee3
+
+-------------------------------------------------------------------------
 
 
 
