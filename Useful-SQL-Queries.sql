@@ -446,9 +446,35 @@ sp_helptext spGetEmployees
 -----------------------------------------------------------
 
 
+Create Procedure spGetEmployeeCountByGender
+@Gender nvarchar(20),
+@EmployeeCount int Output
+as
+Begin
+ Select @EmployeeCount = COUNT(Id) 
+ from tblEmployee 
+ where Gender = @Gender
+End 
 
+Declare @EmployeeTotal int
+Execute spGetEmployeeCountByGender 'Female', @EmployeeTotal output
+Print @EmployeeTotal
 
+Declare @EmployeeTotal int
+Execute spGetEmployeeCountByGender 'Female', @EmployeeTotal
+if(@EmployeeTotal is null)
+ Print '@EmployeeTotal is null'
+else
+ Print '@EmployeeTotal is not null'
 
+Declare @EmployeeTotal int
+Execute spGetEmployeeCountByGender @EmployeeCount = @EmployeeTotal OUT, @Gender = 'Male'
+Print @EmployeeTotal
+
+sp_help spGetEmployeeCountByGender
+sp_depends spGetEmployeeCountByGender
+
+------------------------------------------------------------------------------------------
 
 
 
