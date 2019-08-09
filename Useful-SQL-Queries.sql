@@ -355,7 +355,6 @@ select COALESCE(FirstName, MiddleName, LastName)
 from tblEmployee3
 
 -------------------------------------------------------------------------
-
 -- Union and union all in sql server - Part 17
 
 create table tblIndiaCustomers
@@ -390,6 +389,61 @@ select * from tblUKCustomers
 select * from tblIndiaCustomers
 UNION
 select * from tblUKCustomers
+
+-----------------------------------------------------------------------------
+-- Stored procedures - Part 18
+use sample
+go
+create procedure spGetEmployees
+as
+begin
+	select * from tblEmployee
+end
+
+exec spGetEmployees
+
+
+create proc spGetEmployeeByGenderAndDepartment
+@Gender nvarchar(20),
+@DepartmentID int
+as
+begin
+	select name, gender, DepartmentId 
+	from tblEmployee 
+	where Gender = @Gender
+	and DepartmentID = @DepartmentID
+end
+
+exec spGetEmployeeByGenderAndDepartment @Gender = 'male', @DepartmentID = 1
+exec spGetEmployeeByGenderAndDepartment @Gender = 'female', @DepartmentID = 1
+
+sp_helptext spGetEmployeeByGenderAndDepartment
+
+use sample
+go
+alter procedure spGetEmployees
+as
+begin
+	select * from tblEmployee 
+	order by name
+end
+
+exec spGetEmployees
+drop proc spGetEmployees
+
+use sample
+go
+alter procedure spGetEmployees
+with encryption
+as
+begin
+	select * from tblEmployee 
+	order by name
+end
+
+sp_helptext spGetEmployees
+
+-----------------------------------------------------------
 
 
 
