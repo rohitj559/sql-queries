@@ -356,6 +356,43 @@ from tblEmployee3
 
 -------------------------------------------------------------------------
 
+-- Union and union all in sql server - Part 17
+
+create table tblIndiaCustomers
+(
+	Id int Identity(1,1) primary key,
+	Name nvarchar(20),
+	Email nvarchar(20),
+)
+
+create table tblUKCustomers
+(
+	Id int Identity(1,1) primary key,
+	Name nvarchar(20),
+	Email nvarchar(20),
+)
+
+insert into tblIndiaCustomers values ('Raj', 'r@r.com')
+insert into tblIndiaCustomers values ('sam', 's@s.com')
+insert into tblUKCustomers values ('Ben', 'b@b.com')
+insert into tblUKCustomers values ('sam', 's@s.com')
+
+select * from tblIndiaCustomers
+select * from tblUKCustomers
+
+delete from  tblIndiaCustomers
+delete from tblUKCustomers
+
+select * from tblIndiaCustomers
+UNION ALL
+select * from tblUKCustomers
+
+select * from tblIndiaCustomers
+UNION
+select * from tblUKCustomers
+
+
+
 
 
 
