@@ -528,6 +528,8 @@ Execute @EmployeeName = spGetNameById2 1
 Print 'Name of the Employee = ' + @EmployeeName
 
 ------------------------------------------------------------------------------
+--Built in string functions in sql server 2008 - Part 22
+
 
 
 
