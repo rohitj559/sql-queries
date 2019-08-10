@@ -598,6 +598,34 @@ group by Email
 -----------------------------------------------------------------------------------------------------------------
 --Replicate, Space, Patindex, Replace and Stuff functions - Part 24
 
+SELECT REPLICATE('Pragim', 3)
+
+declare @email nvarchar(50)
+set @email = 'ram@aaa.com'
+select CHARINDEX('@',@email)+1
+select LEN(@email) - CHARINDEX('@',@email)+1
+select SUBSTRING(@email, CHARINDEX('@',@email), LEN(@email) - CHARINDEX('@',@email)+1)
+
+select (SUBSTRING(@email, 1, 2) + REPLICATE('*',5) + 
+SUBSTRING(@email, CHARINDEX('@',@email), LEN(@email) - CHARINDEX('@',@email)+1))
+
+select 'rohit' + space(5) + 'jagannath'
+
+select * from tblPerson
+Select Email, PATINDEX('%@a.com', Email) as FirstOccurence 
+from tblPerson
+Where PATINDEX('%@a.com', Email) > 0
+
+Select Email, REPLACE(Email, '.com', '.net') as ConvertedEmail
+from  tblPerson
+
+Select Email, STUFF(Email, 2, 3, '*****') as StuffedEmail
+From tblPerson
+
+------------------------------------------------------------------------------------------
+--DateTime functions in SQL Server - Part 25
+
+
 
 
 
